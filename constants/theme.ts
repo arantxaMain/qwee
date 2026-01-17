@@ -1,53 +1,79 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+import { TextStyle } from 'react-native';
 
-import { Platform } from 'react-native';
+// Colores neutros
+export const Neutral = {
+  100: '#f7f7f7',
+  300: '#b4b4b4',
+  500: '#868686',
+  700: '#585858',
+  900: '#141414',
+};
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+// Colores de acento
+export const Accent = {
+  red: '#a9565c',
+  orange: '#d7897f',
+  yellow: '#fab95d',
+  green: '#96c7b2',
+  blue: '#6398a8',
+  purple: '#7a6fa3',
+};
 
+// Colores semánticos para light/dark mode
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    text: Neutral[900],
+    textSecondary: Neutral[700],
+    textMuted: Neutral[500],
+    background: Neutral[100],
+    surface: '#ffffff',
+    border: Neutral[300],
+    accent: Accent,
+    neutral: Neutral,
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    text: Neutral[100],
+    textSecondary: Neutral[300],
+    textMuted: Neutral[500],
+    background: Neutral[900],
+    surface: Neutral[700],
+    border: Neutral[700],
+    accent: Accent,
+    neutral: Neutral,
   },
 };
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
+// Familias de fuentes
+export const FontFamily = {
+  title: 'Montagu Slab',
+  body: 'Space Grotesk',
+};
+
+// Estilos de tipografía
+export const Typography: Record<string, TextStyle> = {
+  titulo: {
+    fontFamily: FontFamily.title,
+    fontSize: 32,
+    fontWeight: '500',
+    letterSpacing: -0.32,
+    lineHeight: 35.2,
   },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
+  cardTitulo: {
+    fontFamily: FontFamily.title,
+    fontSize: 16,
+    fontWeight: '500',
+    letterSpacing: -0.32,
+    lineHeight: 19.2,
   },
-  web: {
-    sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-    serif: "Georgia, 'Times New Roman', serif",
-    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
-    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+  cardAnio: {
+    fontFamily: FontFamily.body,
+    fontSize: 14,
+    fontWeight: '500',
+    letterSpacing: -0.28,
+    lineHeight: 16.8,
   },
-});
+};
+
+// Tipo del tema
+export type ThemeColors = typeof Colors.light;
+export type ColorScheme = 'light' | 'dark';
